@@ -12,11 +12,11 @@
             }
             $count++;
         }
+        $check = true;
         foreach ($checkArray as $data){
-            $check = true;
             if ($data == false){
                 $check = false;
-                $error = "* vul alles in";
+                $error = "*vul alles in";
             }
         }
     }

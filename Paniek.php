@@ -1,9 +1,10 @@
 <?php
     $check = false;
+    $error = "";
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $array = $_POST['value'];
         $valArray = array();
-        $checkArray = [false, false, false, false, false, false, false];
+        $checkArray = [false, false, false, false, false, false, false, false];
         $count = 0;
         foreach ($array as $data){
             $valArray[$count] = validate($data);
@@ -12,11 +13,11 @@
             }
             $count++;
         }
+        $check = true;
         foreach ($checkArray as $data){
-            $check = true;
             if ($data == false){
                 $check = false;
-                $error = "* vul alles in";
+                $error = "*vul alles in";
             }
         }
     }
@@ -65,21 +66,21 @@
         <p class="error"><?=$error?></p>
         <form action="Paniek.php" method="post" class="form">
             <label for="dier">Welk dier zou je nooit als huisdier willen hebben?</label>
-            <input id="dier" name="value[]" type="text">
+            <input id="dier" name="value[]" type="text" value="<?= $valArray[0]?>">
             <label for="persoon">Wie is de belangrijkste persoon in je leven?</label>
-            <input id="persoon" name="value[]" type="text">
+            <input id="persoon" name="value[]" type="text" value="<?= $valArray[1]?>">
             <label for="land">In welke land zou je graag willen wonen?</label>
-            <input id="land" name="value[]" type="text">
+            <input id="land" name="value[]" type="text" value="<?= $valArray[2]?>">
             <label for="doen">Wat doe je als je je verveelt?</label>
-            <input id="doen" name="value[]" type="text">
+            <input id="doen" name="value[]" type="text" value="<?= $valArray[3]?>">
             <label for="speelgoed">Met welk speelgoed speelde je als kind het meest?</label>
-            <input id="speelgoed" name="value[]" type="text">
+            <input id="speelgoed" name="value[]" type="text" value="<?= $valArray[4]?>">
             <label for="docent">Bij welke docent?</label>
-            <input id="docent" name="value[]" type="text">
+            <input id="docent" name="value[]" type="text" value="<?= $valArray[5]?>">
             <label for="geld">Als je € 100.000,- had, wat zou je dan kopen?</label>
-            <input id="geld" name="value[]" type="text">
+            <input id="geld" name="value[]" type="text" value="<?= $valArray[6]?>">
             <label for="bezigheid">Wat is je favoriete bezigheid?</label>
-            <input id="bezigheid" name="value[]" type="text">
+            <input id="bezigheid" name="value[]" type="text" value="<?= $valArray[7]?>">
             <input type="submit" value="Versturen">
         </form>
     <?php }else{
